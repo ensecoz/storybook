@@ -10,19 +10,17 @@ jobs:
   chromatic:
     name: 'Run Chromatic'
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./taskbox
     # Job steps
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - run: yarn
+      - run: cd taskbox && yarn
         #👇 Adds Chromatic as a step in the workflow
       - uses: chromaui/action@latest
         # Options required for Chromatic's GitHub Action
         with:
+          workingDir: taskbox
           #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/intro-to-storybook/react/en/deploy/ to obtain it
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
