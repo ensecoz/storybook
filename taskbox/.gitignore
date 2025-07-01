@@ -25,6 +25,7 @@ yarn-error.log*
 
 
 build-storybook.log
+/storybook-static
 
 .pnp.*
 .yarn/*
